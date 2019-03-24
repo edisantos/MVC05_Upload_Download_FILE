@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@*@model List<string>*@
+<div class="container">
+
+    @using (Html.BeginForm("Index", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label>Salvar aquivos em PDF</label>
+            </div>
+            <div class="form-group">
+                @Html.TextBox("file", "", new { type = "file" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">
+                    <span class="glyphicon glyphicon-floppy-saved"> Salvar</span>
+                </button>
+            </div>
+            <div class="form-group">
+                @if (ViewBag.Status == "OK")
+                {
+                    <div class="alert alert-success">
+                        @ViewBag.msg
+                    </div>
+
+                }
+                @if (ViewBag.Status == "NG")
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.msg
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    <hr />
+    <label> Lista de Arquivos</label>
+
+   
+
+</div>
